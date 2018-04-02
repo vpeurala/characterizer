@@ -1,4 +1,5 @@
 .stack-work/
 characterizer.cabal
+.idea/uiDesigner.xml
 .idea/workspace.xml
 out
