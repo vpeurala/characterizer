@@ -1,9 +1,11 @@
+module CharacterizationSpec where
+
 import Control.Exception (evaluate)
-import Lib
+import Characterization
 import Test.Hspec
 
-main :: IO ()
-main = hspec $ do
+spec :: Spec
+spec = do
   describe "Characterizer.parseJavaFile" $ do
     it "Can parse a minimal Java file" $ do
       parseResult <- parseJavaFile "test/MinimalExample.java"

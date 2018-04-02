@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import qualified Characterization
 
 main :: IO ()
-main = someFunc
+main = Characterization.main

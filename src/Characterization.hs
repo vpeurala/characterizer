@@ -1,5 +1,5 @@
-module Lib
-    ( someFunc
+module Characterization
+    ( main
     , parseJavaFile
     ) where
 
@@ -11,8 +11,8 @@ import qualified System.Environment as SE
 import qualified System.IO as SI
 import qualified Text.Parsec.Error as PE
 
-someFunc :: IO ()
-someFunc = do
+main :: IO ()
+main = do
   args <- SE.getArgs
   parseResult <- parseJavaFile $ args !! 0
   putStrLn $ show parseResult
