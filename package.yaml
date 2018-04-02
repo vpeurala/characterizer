@@ -4,7 +4,7 @@ github:              "vpeurala/characterizer"
 license:             BSD3
 author:              "Ville Peurala"
 maintainer:          "ville.peurala@gmail.com"
-copyright:           "2018 Ville Peurala here"
+copyright:           "2018 Ville Peurala"
 
 extra-source-files:
 - README.md
