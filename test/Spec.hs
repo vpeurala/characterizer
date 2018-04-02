@@ -1,2 +1,5 @@
+import Lib
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do
+  parseJavaFile "test/Foo.java"

@@ -1,5 +1,6 @@
 module Lib
     ( someFunc
+    , parseJavaFile
     ) where
 
 import qualified Data.Either as E
@@ -10,7 +11,10 @@ import qualified System.IO as SI
 someFunc :: IO ()
 someFunc = do
   args <- SE.getArgs
-  fileContent <- SI.readFile (args !! 0)
+  parseJavaFile $ args !! 1
+
+parseJavaFile fileName = do
+  fileContent <- SI.readFile fileName
   let parseResult = J.parser J.compilationUnit fileContent
   case parseResult of
     E.Left error -> putStrLn $ "Error: " ++ show error
