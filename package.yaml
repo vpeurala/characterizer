@@ -1,17 +1,17 @@
 name:                characterizer
 version:             0.1.0.0
-github:              "githubuser/characterizer"
+github:              "vpeurala/characterizer"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+author:              "Ville Peurala"
+maintainer:          "ville.peurala@gmail.com"
+copyright:           "2018 Ville Peurala here"
 
 extra-source-files:
 - README.md
 - ChangeLog.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
+# synopsis:            An experimental Java source manipulation tool written in Haskell.
 # category:            Web
 
 # To avoid duplicated efforts in documentation and dealing with the
