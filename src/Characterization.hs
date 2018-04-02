@@ -28,8 +28,8 @@ parseJavaFile fileName = do
   return parseResult
 
 parseJavaFiles :: FilePath -> IO (Either [PE.ParseError] [J.CompilationUnit])
-parseJavaFiles dir = do
-  results <- recurseDirs dir
+parseJavaFiles rootDir = do
+  results <- handleEntry rootDir
   let lefts = DE.lefts results
   if null lefts
   then return $ DE.Right $ DE.rights results
