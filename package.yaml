@@ -26,6 +26,7 @@ dependencies:
 - language-java == 0.2.9
 - MissingH == 1.4.0.1
 - parsec == 3.1.13.0
+- strings == 1.1
 
 library:
   source-dirs: src

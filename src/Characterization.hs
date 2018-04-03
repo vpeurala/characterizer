@@ -7,7 +7,7 @@ module Characterization
 import qualified Control.Exception as CE
 import qualified Control.Monad as CM
 import qualified Data.Either as DE
-import qualified Data.String.Utils as DSU
+import qualified Data.Strings as DS
 import qualified Language.Java.Parser as J
 import qualified Language.Java.Syntax as J
 import qualified System.Directory as SD
@@ -37,7 +37,7 @@ parseJavaFiles rootDir = do
   then return $ DE.Right $ DE.rights results
   else return $ DE.Left lefts
   where recurseDirs :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
-        recurseDirs dir = do
+        recurseDirs dir = trace ("recurseDirs: " ++ dir) $ do
           entries <- SD.listDirectory dir
           let filteredEntries = filter (`notElem` [".", ".."]) entries
           mappedEntries <- CM.mapM handleEntry filteredEntries
@@ -50,6 +50,6 @@ parseJavaFiles rootDir = do
           putStrLn ("isDir for entry " ++ show entry ++ ": " ++ show isDir)
           if isDir
           then recurseDirs entry
-          else if entry `DSU.endswith` ".java"
+          else if DS.strEndsWith entry ".java"
           then sequence $ [parseJavaFile entry]
           else return []
