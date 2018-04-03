@@ -15,6 +15,8 @@ import qualified System.Environment as SE
 import qualified System.IO as SI
 import qualified Text.Parsec.Error as PE
 
+import Debug.Trace
+
 main :: IO ()
 main = do
   args <- SE.getArgs
@@ -41,8 +43,12 @@ parseJavaFiles rootDir = do
           mappedEntries <- CM.mapM handleEntry filteredEntries
           return $ concat mappedEntries
         handleEntry :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
-        handleEntry entry = do
+        handleEntry entry = trace ("handleEntry: " ++ entry) $ do
+          putStrLn ("In handleEntry for entry: " ++ show entry)
           isDir <- SD.doesDirectoryExist entry
+          putStrLn ("isDir for entry " ++ show entry ++ ": " ++ show isDir)
+          -- TODO Remove tracing and foo variable
+          let foo = traceId ("isDir: " ++ (show isDir))
           if isDir
           then recurseDirs entry
           else if entry `DSU.endswith` ".java"

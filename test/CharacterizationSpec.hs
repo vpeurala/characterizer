@@ -15,6 +15,6 @@ spec = do
       (show parseResult) `shouldBe` "Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident \"MainExample\") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident \"main\") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident \"String\",[])]))))) False (VarId (Ident \"args\"))] [ClassRefType (ClassType [(Ident \"Exception\",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident \"System\",Ident \"out\",Ident \"println\"]) [Lit (String \"Hoo vee\")])))]))))]))])"
   describe "Characterizer.parseJavaFiles" $ do
     it "Can parse all examples" $ do
-      parseResult <- parseJavaFiles "test"
+      parseResult <- parseJavaFiles "test-java-project"
       case parseResult of
         Right results -> results `shouldNotBe` []
