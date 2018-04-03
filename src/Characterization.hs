@@ -43,12 +43,11 @@ parseJavaFiles rootDir = do
           mappedEntries <- CM.mapM handleEntry filteredEntries
           return $ concat mappedEntries
         handleEntry :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
+        -- TODO Remove tracing and putStrLn output
         handleEntry entry = trace ("handleEntry: " ++ entry) $ do
           putStrLn ("In handleEntry for entry: " ++ show entry)
           isDir <- SD.doesDirectoryExist entry
           putStrLn ("isDir for entry " ++ show entry ++ ": " ++ show isDir)
-          -- TODO Remove tracing and foo variable
-          let foo = traceId ("isDir: " ++ (show isDir))
           if isDir
           then recurseDirs entry
           else if entry `DSU.endswith` ".java"
