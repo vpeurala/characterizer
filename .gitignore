@@ -3,3 +3,6 @@ characterizer.cabal
 .idea/uiDesigner.xml
 .idea/workspace.xml
 out
+.idea/compiler.xml
+.idea/sbt.xml
+.idea/misc.xml
