@@ -1,0 +1,16 @@
+parseJavaFiles test-java-project
+handleEntry: test-java-project
+recurseDirs: test-java-project
+handleEntry: src
+recurseDirs: src
+handleEntry: Characterization.hs
+In handleEntry for entry: "test-java-project"
+isDir for entry "test-java-project": True
+Was directory
+In handleEntry for entry: "src"
+isDir for entry "src": True
+Was directory
+In handleEntry for entry: "Characterization.hs"
+isDir for entry "Characterization.hs": False
+Returning sequence []
+Right []
