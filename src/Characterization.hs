@@ -57,5 +57,5 @@ parseJavaFiles rootDir = do
             putStrLn "Was Java file"
             sequence $ [parseJavaFile entry]
           else do
-            putStrLn "Returning empty list"
-            return []
+            putStrLn "Returning sequence []"
+            sequence []
