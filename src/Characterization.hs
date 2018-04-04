@@ -49,7 +49,13 @@ parseJavaFiles rootDir = do
           isDir <- SD.doesDirectoryExist entry
           putStrLn ("isDir for entry " ++ show entry ++ ": " ++ show isDir)
           if isDir
-          then recurseDirs entry
+            then do
+            putStrLn "Was directory"
+            recurseDirs entry
           else if DS.strEndsWith entry ".java"
-          then sequence $ [parseJavaFile entry]
-          else return []
+            then do
+            putStrLn "Was Java file"
+            sequence $ [parseJavaFile entry]
+          else do
+            putStrLn "Returning empty list"
+            return []

@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/test-java-project/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.stack-work" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -46,5 +45,14 @@
     <orderEntry type="library" name="tf-random-0.5" level="project" />
     <orderEntry type="library" name="time-1.8.0.2" level="project" />
     <orderEntry type="library" name="unix-2.7.2.2" level="project" />
+    <orderEntry type="library" name="MissingH-1.4.0.1" level="project" />
+    <orderEntry type="library" name="hslogger-1.2.10" level="project" />
+    <orderEntry type="library" name="network-2.6.3.5" level="project" />
+    <orderEntry type="library" name="old-locale-1.0.0.7" level="project" />
+    <orderEntry type="library" name="old-time-1.1.0.3" level="project" />
+    <orderEntry type="library" name="process-1.6.1.0" level="project" />
+    <orderEntry type="library" name="regex-base-0.93.2" level="project" />
+    <orderEntry type="library" name="regex-compat-0.95.1" level="project" />
+    <orderEntry type="library" name="regex-posix-0.95.2" level="project" />
   </component>
 </module>
