@@ -24,13 +24,13 @@ main = do
   putStrLn $ show parseResult
 
 parseJavaFile :: FilePath -> IO (Either PE.ParseError J.CompilationUnit)
-parseJavaFile fileName = trace ("parseJavaFile " ++ (show fileName)) $ do
+parseJavaFile fileName = do
   fileContent <- SI.readFile fileName
   let parseResult = J.parser J.compilationUnit fileContent
   return parseResult
 
 parseJavaFiles :: FilePath -> IO (Either [PE.ParseError] [J.CompilationUnit])
-parseJavaFiles rootDir = trace ("parseJavaFiles " ++ rootDir) $ do
+parseJavaFiles rootDir = do
   results <- handleEntry rootDir "."
   let lefts = DE.lefts results
   if null lefts
