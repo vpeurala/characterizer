@@ -37,28 +37,28 @@ parseJavaFiles rootDir = trace ("parseJavaFiles " ++ rootDir) $ do
   then return $ DE.Right $ DE.rights results
   else return $ DE.Left lefts
   where recurseDirs :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
-        recurseDirs dir = trace ("recurseDirs: " ++ dir) $ do
+        recurseDirs dir = do
           entries <- SD.listDirectory dir
-          putStrLn ("entries: " ++ show entries)
+          --putStrLn ("entries: " ++ show entries)
           let filteredEntries = filter (`notElem` [".", ".."]) entries
-          putStrLn ("filtered entries: " ++ show filteredEntries)
+          --putStrLn ("filtered entries: " ++ show filteredEntries)
           mappedEntries <- CM.mapM (handleEntry dir) filteredEntries
-          putStrLn ("mapped entries: " ++ show mappedEntries)
+          --putStrLn ("mapped entries: " ++ show mappedEntries)
           return $ concat mappedEntries
         handleEntry :: FilePath -> FilePath -> IO [Either PE.ParseError J.CompilationUnit]
         -- TODO Remove tracing and putStrLn output
-        handleEntry dir entry = trace ("handleEntry: " ++ dir ++ "/" ++ entry) $ do
-          putStrLn ("In handleEntry for entry: " ++ show entry)
+        handleEntry dir entry = do
+          --putStrLn ("In handleEntry for entry: " ++ show entry)
           isDir <- SD.doesDirectoryExist (dir ++ "/" ++ entry)
-          putStrLn ("isDir for entry " ++ (dir ++ "/" ++ entry) ++ ": " ++ show isDir)
+          --putStrLn ("isDir for entry " ++ (dir ++ "/" ++ entry) ++ ": " ++ show isDir)
           if isDir
             then do
-            putStrLn "Was directory"
+            --putStrLn "Was directory"
             recurseDirs (dir ++ "/" ++ entry)
           else if DS.strEndsWith entry ".java"
             then do
-            putStrLn "Was Java file"
+            --putStrLn "Was Java file"
             sequence $ [parseJavaFile (dir ++ "/" ++ entry)]
           else do
-            putStrLn "Returning sequence []"
+            --putStrLn "Returning sequence []"
             sequence []
