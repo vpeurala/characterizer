@@ -1,16 +1,44 @@
 parseJavaFiles test-java-project
-handleEntry: test-java-project
-recurseDirs: test-java-project
-handleEntry: src
-recurseDirs: src
-handleEntry: Characterization.hs
-In handleEntry for entry: "test-java-project"
-isDir for entry "test-java-project": True
+handleEntry: test-java-project/.
+recurseDirs: test-java-project/.
+handleEntry: test-java-project/./src
+recurseDirs: test-java-project/./src
+handleEntry: test-java-project/./src/main
+recurseDirs: test-java-project/./src/main
+handleEntry: test-java-project/./src/main/java
+recurseDirs: test-java-project/./src/main/java
+handleEntry: test-java-project/./src/main/java/MinimalExample.java
+parseJavaFile "test-java-project/./src/main/java/MinimalExample.java"
+handleEntry: test-java-project/./src/main/java/MainExample.java
+parseJavaFile "test-java-project/./src/main/java/MainExample.java"
+In handleEntry for entry: "."
+isDir for entry test-java-project/.: True
 Was directory
+entries: ["src"]
+filtered entries: ["src"]
 In handleEntry for entry: "src"
-isDir for entry "src": True
+isDir for entry test-java-project/./src: True
 Was directory
-In handleEntry for entry: "Characterization.hs"
-isDir for entry "Characterization.hs": False
-Returning sequence []
-Right []
+entries: ["main"]
+filtered entries: ["main"]
+In handleEntry for entry: "main"
+isDir for entry test-java-project/./src/main: True
+Was directory
+entries: ["java"]
+filtered entries: ["java"]
+In handleEntry for entry: "java"
+isDir for entry test-java-project/./src/main/java: True
+Was directory
+entries: ["MinimalExample.java","MainExample.java"]
+filtered entries: ["MinimalExample.java","MainExample.java"]
+In handleEntry for entry: "MinimalExample.java"
+isDir for entry test-java-project/./src/main/java/MinimalExample.java: False
+Was Java file
+In handleEntry for entry: "MainExample.java"
+isDir for entry test-java-project/./src/main/java/MainExample.java: False
+Was Java file
+mapped entries: [[Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MinimalExample") [] Nothing [] (ClassBody []))])],[Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MainExample") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident "main") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident "String",[])]))))) False (VarId (Ident "args"))] [ClassRefType (ClassType [(Ident "Exception",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident "System",Ident "out",Ident "println"]) [Lit (String "Hoo vee")])))]))))]))])]]
+mapped entries: [[Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MinimalExample") [] Nothing [] (ClassBody []))]),Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MainExample") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident "main") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident "String",[])]))))) False (VarId (Ident "args"))] [ClassRefType (ClassType [(Ident "Exception",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident "System",Ident "out",Ident "println"]) [Lit (String "Hoo vee")])))]))))]))])]]
+mapped entries: [[Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MinimalExample") [] Nothing [] (ClassBody []))]),Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MainExample") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident "main") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident "String",[])]))))) False (VarId (Ident "args"))] [ClassRefType (ClassType [(Ident "Exception",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident "System",Ident "out",Ident "println"]) [Lit (String "Hoo vee")])))]))))]))])]]
+mapped entries: [[Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MinimalExample") [] Nothing [] (ClassBody []))]),Right (CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MainExample") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident "main") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident "String",[])]))))) False (VarId (Ident "args"))] [ClassRefType (ClassType [(Ident "Exception",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident "System",Ident "out",Ident "println"]) [Lit (String "Hoo vee")])))]))))]))])]]
+Right [CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MinimalExample") [] Nothing [] (ClassBody []))],CompilationUnit Nothing [] [ClassTypeDecl (ClassDecl [public] (Ident "MainExample") [] Nothing [] (ClassBody [MemberDecl (MethodDecl [public,static] [] Nothing (Ident "main") [FormalParam [] (RefType (ArrayType (RefType (ClassRefType (ClassType [(Ident "String",[])]))))) False (VarId (Ident "args"))] [ClassRefType (ClassType [(Ident "Exception",[])])] Nothing (MethodBody (Just (Block [BlockStmt (ExpStmt (MethodInv (MethodCall (Name [Ident "System",Ident "out",Ident "println"]) [Lit (String "Hoo vee")])))]))))]))]]

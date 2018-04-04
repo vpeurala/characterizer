@@ -31,7 +31,7 @@ parseJavaFile fileName = trace ("parseJavaFile " ++ (show fileName)) $ do
 
 parseJavaFiles :: FilePath -> IO (Either [PE.ParseError] [J.CompilationUnit])
 parseJavaFiles rootDir = trace ("parseJavaFiles " ++ rootDir) $ do
-  results <- handleEntry rootDir
+  results <- handleEntry rootDir "."
   let lefts = DE.lefts results
   if null lefts
   then return $ DE.Right $ DE.rights results
@@ -39,23 +39,26 @@ parseJavaFiles rootDir = trace ("parseJavaFiles " ++ rootDir) $ do
   where recurseDirs :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
         recurseDirs dir = trace ("recurseDirs: " ++ dir) $ do
           entries <- SD.listDirectory dir
+          putStrLn ("entries: " ++ show entries)
           let filteredEntries = filter (`notElem` [".", ".."]) entries
-          mappedEntries <- CM.mapM handleEntry filteredEntries
+          putStrLn ("filtered entries: " ++ show filteredEntries)
+          mappedEntries <- CM.mapM (handleEntry dir) filteredEntries
+          putStrLn ("mapped entries: " ++ show mappedEntries)
           return $ concat mappedEntries
-        handleEntry :: FilePath -> IO [Either PE.ParseError J.CompilationUnit]
+        handleEntry :: FilePath -> FilePath -> IO [Either PE.ParseError J.CompilationUnit]
         -- TODO Remove tracing and putStrLn output
-        handleEntry entry = trace ("handleEntry: " ++ entry) $ do
+        handleEntry dir entry = trace ("handleEntry: " ++ dir ++ "/" ++ entry) $ do
           putStrLn ("In handleEntry for entry: " ++ show entry)
-          isDir <- SD.doesDirectoryExist entry
-          putStrLn ("isDir for entry " ++ show entry ++ ": " ++ show isDir)
+          isDir <- SD.doesDirectoryExist (dir ++ "/" ++ entry)
+          putStrLn ("isDir for entry " ++ (dir ++ "/" ++ entry) ++ ": " ++ show isDir)
           if isDir
             then do
             putStrLn "Was directory"
-            recurseDirs entry
+            recurseDirs (dir ++ "/" ++ entry)
           else if DS.strEndsWith entry ".java"
             then do
             putStrLn "Was Java file"
-            sequence $ [parseJavaFile entry]
+            sequence $ [parseJavaFile (dir ++ "/" ++ entry)]
           else do
             putStrLn "Returning sequence []"
             sequence []
